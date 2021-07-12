@@ -1,0 +1,16 @@
+parameters:
+  name: service-pastry-consumer
+  subsystem: app
+
+  image: ${registry}/${name}
+  image_pull_policy: Never
+  registry: whitehatdev.azurecr.io
+  replicas: 2
+
+  resources:
+    limits:
+      cpu: 4
+      memory: 1Gi
+    requests:
+      cpu: 0.5
+      memory: 512Mi

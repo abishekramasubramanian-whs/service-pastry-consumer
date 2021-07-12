@@ -1,0 +1,15 @@
+classes:
+  - app
+
+parameters:
+  replicas: 1
+
+  kapitan:
+    vars:
+      target: integration
+    compile:
+      - input_paths:
+          - components/app
+        input_type: jinja2
+        output_path: .
+        output_type: yaml

@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ inventory.parameters.name }}
+  namespace: {{ inventory.parameters.name }}
+  labels:
+    app: {{ inventory.parameters.name }}
+    subsystem: {{ inventory.parameters.subsystem }}
+spec:
+  replicas: {{ inventory.parameters.replicas }}
+  selector:
+    matchLabels:
+      app: {{ inventory.parameters.name }}
+      subsystem: {{ inventory.parameters.subsystem }}
+  template:
+    metadata:
+      labels:
+        app: {{ inventory.parameters.name }}
+        subsystem: {{ inventory.parameters.subsystem }}
+    spec:
+      enableServiceLinks: false
+      containers:
+        - name: {{ inventory.parameters.name }}
+          image: {{ inventory.parameters.image }}
+          imagePullPolicy: {{ inventory.parameters.image_pull_policy }}
+          env:
+            - name: NODE_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+          resources:
+            limits:
+              cpu: {{ inventory.parameters.resources.limits.cpu }}
+              memory: {{ inventory.parameters.resources.limits.memory }}
+            requests:
+              cpu: {{ inventory.parameters.resources.requests.cpu }}
+              memory: {{ inventory.parameters.resources.requests.memory }}
