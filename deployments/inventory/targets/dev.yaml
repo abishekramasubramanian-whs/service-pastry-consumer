@@ -1,0 +1,20 @@
+classes:
+  - app
+
+parameters:
+  replicas: 1
+
+  resources:
+    requests:
+      cpu: 0
+      memory: 0Mi
+
+  kapitan:
+    vars:
+      target: dev
+    compile:
+      - input_paths:
+          - components/app
+        input_type: jinja2
+        output_path: ./0-app
+        output_type: yaml

@@ -1,0 +1,13 @@
+classes:
+  - app
+
+parameters:
+  kapitan:
+    vars:
+      target: production
+    compile:
+      - input_paths:
+          - components/app
+        input_type: jinja2
+        output_path: .
+        output_type: yaml

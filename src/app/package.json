@@ -1,0 +1,11 @@
+{
+  "name": "docker_web_app",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.16.1",
+    "https": "^1.0.0",
+    "body-parser": "^1.19.0"
+  }
+}
